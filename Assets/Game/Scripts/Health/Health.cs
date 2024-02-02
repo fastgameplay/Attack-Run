@@ -1,48 +1,53 @@
 namespace AttackRun.Health{
     using System;
     using UnityEngine;
-    public abstract class Health : MonoBehaviour
+    public class Health : MonoBehaviour
     {
         private int CurrentHealth {
             get => _currentHealth;
             set {
                 if(value <= 0){
                     OnDeath();
+                    _isDead = true;
                     value = 0;
                 }
                 _currentHealth = value;
                 OnHealthUpdate(value);
             }
         }
-        private Action<int> _onDamageReceived;
+        private Action _onDeath;
+        private Action<int> _onHealthChange;
         private int _maxHealth;
         private int _currentHealth;
-
-        public void Init(int maxHealth, Action<int> onDamageReceived){
-            _onDamageReceived = onDamageReceived;
-            _onDamageReceived += OnDamage;
+        private bool _isDead = true;
+        public void Init(int maxHealth, Action onDeath, Action<int> onHealthChange){
             _maxHealth = maxHealth;
             _currentHealth = maxHealth;
+            _onDeath = onDeath;
+            _onHealthChange = onHealthChange;
+            _isDead = false;
         }
-        protected void InitEvents(Action<int> onDamageReceived){
-            if(_onDamageReceived != null){
-                _onDamageReceived -= OnDamage;
-                _onDamageReceived = null;
-            }
-            _onDamageReceived = onDamageReceived;
-            _onDamageReceived += OnDamage;
-        }
-        protected void OnDamage(int damage){
+        
+        public void Damage(int damage){
+            if(_isDead) return;
             CurrentHealth -= damage;
         }
 
-        protected abstract void OnHealthUpdate(int value);
-        protected abstract void OnDeath();
-        private void OnDisable() {
-            if(_onDamageReceived == null) return;
-            _onDamageReceived -= OnDamage;
-            _onDamageReceived = null;
+        private void OnHealthUpdate(int value){
+            if(_onHealthChange == null){
+                Debug.LogError("_onHealthChange Not assigned");
+                return;
+            }
+            _onHealthChange?.Invoke(value);
         }
+        private void OnDeath(){
+            if(_onDeath == null) {
+                Debug.LogError("_onDeath Not assigned");
+                return;
+            }
+            _onDeath?.Invoke();
+        }
+        
     }
 
 }

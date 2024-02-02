@@ -4,8 +4,12 @@ namespace AttackRun.Player{
     public struct PlayerEvents
     {
         public EventReference<int> OnDamageRecived;
-        public EventReference<int> OnDamageApplyed;
+        public EventReference<int> OnHealthChange;
         public EventReference OnDeath;
+
+        public EventReference<bool> OnBlockStateChange;
+        public EventReference<bool> OnAttackStateChange;
+
         
     }
 }

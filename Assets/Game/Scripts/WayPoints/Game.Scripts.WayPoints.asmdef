@@ -1,10 +1,7 @@
 {
-    "name": "Game.Scripts.Player",
+    "name": "Game.Scripts.WayPoints",
     "rootNamespace": "",
-    "references": [
-        "GUID:15f1eb268ed1e0249a792c804e89d956",
-        "GUID:9e197fbdc9832b746bb3c838f619b422"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

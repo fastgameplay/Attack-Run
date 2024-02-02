@@ -3,7 +3,6 @@ namespace AttackRun.Player{
     
     public class PlayerBase : MonoBehaviour{
         protected Player player;
-
         protected virtual void Awake() {
             player = transform.root.GetComponent<Player>();
         }
