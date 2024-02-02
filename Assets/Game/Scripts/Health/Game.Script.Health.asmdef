@@ -1,0 +1,16 @@
+{
+    "name": "Game.Script.Health",
+    "rootNamespace": "",
+    "references": [
+        "GUID:15f1eb268ed1e0249a792c804e89d956"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

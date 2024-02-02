@@ -2,8 +2,7 @@ namespace AttackRun.Events.Editor
 {
     using UnityEditor;
     using UnityEngine;
-    using AttackRun.Events;
-
+    
     [CustomPropertyDrawer(typeof(EventReference))]
     [CustomPropertyDrawer(typeof(EventReference<>))]
     [CustomPropertyDrawer(typeof(EventReference<,>))]
