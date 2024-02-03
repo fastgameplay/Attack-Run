@@ -1,5 +1,4 @@
 namespace AttackRun.Player{
-    using UnityEngine;
     using AttackRun.Events;
     public struct PlayerEvents
     {
