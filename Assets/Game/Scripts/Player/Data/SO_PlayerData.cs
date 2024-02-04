@@ -5,9 +5,11 @@ namespace AttackRun.Player{
     public class SO_PlayerData : ScriptableObject
     {
         public float MoveSpeed => _moveSpeed;
+        public float StopDistance => _stopDistance;
 
         [Header("Movement")]
         [SerializeField] float _moveSpeed;
+        [SerializeField] float _stopDistance;
 
         [Space(10)]
         [Header("Health")]

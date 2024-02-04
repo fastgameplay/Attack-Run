@@ -67,6 +67,13 @@ namespace AttackRun.Events
             return eventRef;
         }
 
+        public void AddListener(Action<T> listener){
+            Event += listener;
+        }
+        public void RemoveListener(Action<T> listener){
+            Event -= listener;
+        }
+
         public void Invoke(T arg1){
             Event?.Invoke(arg1);
         }
